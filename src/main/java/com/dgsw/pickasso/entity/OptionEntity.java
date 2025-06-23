@@ -15,8 +15,7 @@ public class OptionEntity {
     private String content;
     private Integer count;
 
-    @ManyToOne
-    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vote_id")
     private VoteEntity vote;
 }

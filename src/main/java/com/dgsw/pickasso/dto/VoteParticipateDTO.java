@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OptionDTO {
-    private Long id;
-    private String content;
-    private Integer count;
+public class VoteParticipateDTO {
+    private Long optionId;
 }
