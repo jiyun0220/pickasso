@@ -19,7 +19,7 @@ public class VoteController {
     private VoteService voteService;
 
     @PostMapping("/votes")
-    public ResponseEntity<ResponseDTO> registerVote(@RequestBody VoteDTO voteDTO){
+    public ResponseEntity<ResponseDTO<Long>> registerVote(@RequestBody VoteDTO voteDTO){
         log.info("vote title:{}", voteDTO.getTitle());
         log.info("vote options:{}", voteDTO.getOptions());
 
@@ -37,7 +37,7 @@ public class VoteController {
     }
 
     @GetMapping("/votes")
-    public ResponseEntity<ResponseDTO> getAllVotes() {
+    public ResponseEntity<ResponseDTO<List<VoteDTO>>> getAllVotes() {
         List<VoteDTO> votes = voteService.getAllVotes();
         return ResponseEntity.ok(
             new ResponseDTO(true, "Votes retrieved successfully", votes)
@@ -47,7 +47,7 @@ public class VoteController {
 
 
     @GetMapping("/votes/{id}")
-    public ResponseEntity<ResponseDTO> getVoteById(@PathVariable Long id) {
+    public ResponseEntity<ResponseDTO<VoteDTO>> getVoteById(@PathVariable Long id) {
         VoteDTO voteDTO = voteService.getVoteById(id);
         if (voteDTO != null) {
             return ResponseEntity.ok(

@@ -7,12 +7,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class ResponseDTO {
+public class ResponseDTO<T> {
     private String message;
     private boolean success;
-    private Long id;
+    private T data;
     
     public ResponseDTO(String message) {
         this.message = message;
@@ -24,9 +23,9 @@ public class ResponseDTO {
         this.message = message;
     }
     
-    public ResponseDTO(boolean success, String message, Long id) {
+    public ResponseDTO(boolean success, String message, T data) {
         this.success = success;
         this.message = message;
-        this.id = id;
+        this.data = data;
     }
 }
