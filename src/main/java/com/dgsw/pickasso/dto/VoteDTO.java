@@ -1,6 +1,7 @@
 package com.dgsw.pickasso.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;  // JSON 응답에서 null 값 필드 제외 어노테이션
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;  // 공백만 있는 문자열 및 null 검증 어노테이션
 import jakarta.validation.constraints.NotEmpty;  // 비어있지 않은지 검증 어노테이션(컵렉션용)
 import jakarta.validation.constraints.NotNull;  // null 값 검증 어노테이션
@@ -18,6 +19,7 @@ import java.util.ArrayList;  // 옵션 목록을 저장할 ArrayList
 @NoArgsConstructor  // 기본 생성자 자동 생성
 @JsonInclude(JsonInclude.Include.NON_NULL)  // JSON 변환 시 null 값을 가진 필드는 제외
 public class VoteDTO {  // 투표 정보를 주고받기 위한 DTO 클래스
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;  // 투표 ID - 생성된 투표의 고유 식별자
     
     @NotBlank(message = "제목은 필수 입력값입니다")  // 공백만 있는 문자열 및 null 검증 어노테이션
